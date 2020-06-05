@@ -39,7 +39,8 @@
 
 <body>
   <video id="my-player" class="video-js" controls preload="auto" poster="//vjs.zencdn.net/v/oceans.png" data-setup='{}'
-    x-webkit-airplay="true" playsinline webkit-playsinline="true" x5-video-player-type="h5">
+    controls="controls" x5-playsinline="" playsinline="" webkit-playsinline="true" x-webkit-airplay="true"
+    x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint">
     <source src="video1.mp4" type="video/mp4">
     </source>
     <source src="video1.mp4.webm" type="video/webm">
@@ -71,19 +72,22 @@
       var timeDisplay = Math.floor(e.target.currentTime);
       // console.log(Math.floor(video1.currentTime))
       //当视频播放到 3s的时候做处理
-      if (!status) {
-        if (timeDisplay == 3) {
-          e.target.pause();
-          $(".adv").show()
-          $(".mask").show()
-          var status = true
-        }
+      // if (!status) {
+      //   console.log(111)
+      if (timeDisplay == 3) {
+        e.target.pause();
+        $(".adv").show()
+        $(".mask").show()
+        $('#my-player').hide()
+        status = true
       }
+      // }
     }, true);
 
     $(".submit").on("click", function () {
       $(".adv").hide()
       $(".mask").hide()
+      $('#my-player').show()
       player.play()
     })
   </script>
